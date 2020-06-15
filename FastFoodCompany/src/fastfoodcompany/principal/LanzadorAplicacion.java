@@ -3,17 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package principal;
-
-import vista.FrameAplicacion;
+package fastfoodcompany.principal;
 
 /**
  *
  * @author Fabio
  */
-public class Aplicacion {
+public class LanzadorAplicacion {
     public static void main(String[] args){
-        FrameAplicacion frame = new FrameAplicacion();
+        FastFoodCompanyFrame frame = new FastFoodCompanyFrame();
         frame.setVisible(true);
     }
 }
