@@ -15,9 +15,11 @@ import java.util.ListIterator;
  */
 public class AccionesAltaClientes {
     private PanelAltaClientes panel;
+    private AccionesDB accionesDB;
     
     public AccionesAltaClientes(PanelAltaClientes panel){
         this.panel = panel;
+        accionesDB = new AccionesDB();
     }
     
     public void guardarCliente(){
@@ -26,6 +28,8 @@ public class AccionesAltaClientes {
         filaCliente.add(panel.getTxtNombre().getText());
         filaCliente.add(panel.getTxtApellido1().getText());
         filaCliente.add(panel.getTxtApellido2().getText());
+        
+        accionesDB.GuardarCliente(filaCliente);
         
         panel.getFrame().getClientesGuardados().add(filaCliente);
     }
