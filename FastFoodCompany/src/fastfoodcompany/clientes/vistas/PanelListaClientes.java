@@ -5,7 +5,9 @@
  */
 package fastfoodcompany.clientes.vistas;
 
+import fastfoodcompany.clientes.acciones.AccionesDB;
 import fastfoodcompany.principal.FastFoodCompanyFrame;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -14,6 +16,7 @@ import fastfoodcompany.principal.FastFoodCompanyFrame;
 public class PanelListaClientes extends javax.swing.JPanel {
 
     private FastFoodCompanyFrame frame;
+    private DefaultTableModel tabla;
     
     /**
      * Creates new form PanelListaClientes
@@ -21,6 +24,37 @@ public class PanelListaClientes extends javax.swing.JPanel {
     public PanelListaClientes(FastFoodCompanyFrame frame) {
         initComponents();
         this.frame = frame;
+        cargaTabla();
+        inizializaLista();
+    }
+    
+    /**
+     * Accedemos a la clase accionesDB para que nos escriva en nuestra tabla
+     * todos los clientes que tenemos creados y guardados
+     */
+    private void inizializaLista(){
+        AccionesDB accionesDB = new AccionesDB(tabla);
+        accionesDB.listaClientesGuardados();
+    }
+    
+    /**
+     * Cargamos una tabla con los parametros que deseamos
+     */
+    public void cargaTabla(){
+        tabla = new DefaultTableModel(new String[]{
+            "Nombre", "P Apellido", "S Apellido"
+        }, 0);
+        
+        tblClientes.setModel(tabla);        
+    }
+    
+    
+    /**
+     * Acceso a los componentes
+     */
+    
+    public DefaultTableModel getTabla(){
+        return tabla;
     }
     
     
