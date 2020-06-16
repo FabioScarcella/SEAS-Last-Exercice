@@ -70,15 +70,15 @@ public class PanelAltaClientes extends javax.swing.JPanel {
 
         lblNombre.setText("Nombre");
         add(lblNombre);
-        lblNombre.setBounds(80, 60, 80, 15);
+        lblNombre.setBounds(80, 60, 80, 14);
 
         lblApellido1.setText("Apellido 1");
         add(lblApellido1);
-        lblApellido1.setBounds(80, 100, 80, 15);
+        lblApellido1.setBounds(80, 100, 80, 14);
 
         lblApellido2.setText("Apellido 2");
         add(lblApellido2);
-        lblApellido2.setBounds(80, 140, 80, 15);
+        lblApellido2.setBounds(80, 140, 80, 14);
 
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,7 +86,7 @@ public class PanelAltaClientes extends javax.swing.JPanel {
             }
         });
         add(txtNombre);
-        txtNombre.setBounds(160, 60, 110, 19);
+        txtNombre.setBounds(160, 60, 110, 18);
 
         txtApellido1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,7 +94,7 @@ public class PanelAltaClientes extends javax.swing.JPanel {
             }
         });
         add(txtApellido1);
-        txtApellido1.setBounds(160, 100, 110, 19);
+        txtApellido1.setBounds(160, 100, 110, 18);
 
         txtApellido2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,7 +102,7 @@ public class PanelAltaClientes extends javax.swing.JPanel {
             }
         });
         add(txtApellido2);
-        txtApellido2.setBounds(160, 140, 110, 19);
+        txtApellido2.setBounds(160, 140, 110, 18);
 
         btnGuardar.setText("Guardar");
         btnGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -116,16 +116,17 @@ public class PanelAltaClientes extends javax.swing.JPanel {
             }
         });
         add(btnGuardar);
-        btnGuardar.setBounds(190, 180, 80, 25);
+        btnGuardar.setBounds(180, 180, 90, 24);
 
         btnListaClientes.setText("Lista Clientes");
+        btnListaClientes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnListaClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnListaClientesActionPerformed(evt);
             }
         });
         add(btnListaClientes);
-        btnListaClientes.setBounds(290, 10, 100, 30);
+        btnListaClientes.setBounds(260, 10, 130, 30);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed

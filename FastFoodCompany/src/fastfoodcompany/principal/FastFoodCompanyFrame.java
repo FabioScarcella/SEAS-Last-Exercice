@@ -6,6 +6,7 @@
 package fastfoodcompany.principal;
 
 import fastfoodcompany.clientes.vistas.PanelAltaClientes;
+import fastfoodcompany.clientes.vistas.PanelListaClientes;
 import java.util.ArrayList;
 
 /**
@@ -21,6 +22,12 @@ public class FastFoodCompanyFrame extends javax.swing.JFrame {
      */
     public FastFoodCompanyFrame() {
         initComponents();
+    }
+    /**
+     * Funcion que limpa el JPanel en caso de que haya algo previamente abierto
+     */
+    private void limpiarPanel(){
+        panelContenedor.removeAll();
     }
     
     public ArrayList getClientesGuardados(){
@@ -64,6 +71,12 @@ public class FastFoodCompanyFrame extends javax.swing.JFrame {
         mnuCliente.add(mnuAltaCliente);
 
         mnuEditaCliente.setText("EditaCliente");
+        mnuEditaCliente.setActionCommand("Edita Cliente");
+        mnuEditaCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuEditaClienteActionPerformed(evt);
+            }
+        });
         mnuCliente.add(mnuEditaCliente);
 
         mnuBajaCliente.setText("Baja Cliente");
@@ -72,6 +85,11 @@ public class FastFoodCompanyFrame extends javax.swing.JFrame {
         jMenuBar1.add(mnuCliente);
 
         mnuEmpleados.setText("Empleados");
+        mnuEmpleados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mnuEmpleadosMouseClicked(evt);
+            }
+        });
         jMenuBar1.add(mnuEmpleados);
 
         setJMenuBar(jMenuBar1);
@@ -81,10 +99,23 @@ public class FastFoodCompanyFrame extends javax.swing.JFrame {
 
     private void mnuAltaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAltaClienteActionPerformed
         // TODO add your handling code here:
+        limpiarPanel();
         PanelAltaClientes altaClientes = new PanelAltaClientes(this);
         panelContenedor.add(altaClientes, java.awt.BorderLayout.CENTER);
         pack();
     }//GEN-LAST:event_mnuAltaClienteActionPerformed
+
+    private void mnuEditaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuEditaClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnuEditaClienteActionPerformed
+
+    private void mnuEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnuEmpleadosMouseClicked
+        // TODO add your handling code here:
+        limpiarPanel();
+        PanelListaClientes panelListaClientes = new PanelListaClientes(this);
+        panelContenedor.add(panelListaClientes, java.awt.BorderLayout.CENTER);
+        pack();
+    }//GEN-LAST:event_mnuEmpleadosMouseClicked
 
     /**
      * @param args the command line arguments
