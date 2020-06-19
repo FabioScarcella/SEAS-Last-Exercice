@@ -34,16 +34,4 @@ public class AccionesAltaClientes {
         panel.getFrame().getClientesGuardados().add(filaCliente);
     }
     
-    public void listAllClients(){
-        ArrayList clientes = new ArrayList();
-        clientes = panel.getFrame().getClientesGuardados();
-        
-        ListIterator listIterator;
-        listIterator = clientes.listIterator();
-        
-        while(listIterator.hasNext()){
-            System.out.println(listIterator.next());
-        }
-    }
-    
 }

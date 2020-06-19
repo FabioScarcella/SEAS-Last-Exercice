@@ -5,6 +5,7 @@
  */
 package fastfoodcompany.clientes.vistas;
 
+import fastfoodcompany.clientes.acciones.AccionesEditaCliente;
 import fastfoodcompany.principal.FastFoodCompanyFrame;
 
 /**
@@ -19,6 +20,20 @@ public class PanelEditaCliente extends javax.swing.JPanel {
     public PanelEditaCliente(FastFoodCompanyFrame frame) {
         initComponents();
         this.frame = frame;
+    }
+    
+    //Getters
+    public javax.swing.JTextField getTxtNumeroCliente(){
+        return txtNumeroCliente;
+    }
+    public javax.swing.JTextField getTxtNombre(){
+        return txtNombre;
+    }
+    public javax.swing.JTextField getTxtApellido1(){
+        return txtApellido1;
+    }
+    public javax.swing.JTextField getTxtApellido2(){
+        return txtApellido2;
     }
 
     /**
@@ -50,6 +65,11 @@ public class PanelEditaCliente extends javax.swing.JPanel {
         txtNombre.setBounds(120, 110, 60, 18);
 
         btnGuardar.setText("Guardar");
+        btnGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnGuardarMousePressed(evt);
+            }
+        });
         add(btnGuardar);
         btnGuardar.setBounds(220, 220, 81, 24);
 
@@ -85,6 +105,12 @@ public class PanelEditaCliente extends javax.swing.JPanel {
     private void txtNumeroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroClienteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNumeroClienteActionPerformed
+
+    private void btnGuardarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMousePressed
+        // TODO add your handling code here:
+        AccionesEditaCliente accionesEditaCliente = new AccionesEditaCliente(this);
+        accionesEditaCliente.EditaCliente();
+    }//GEN-LAST:event_btnGuardarMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

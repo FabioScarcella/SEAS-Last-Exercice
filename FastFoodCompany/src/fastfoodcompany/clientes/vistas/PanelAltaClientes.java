@@ -64,7 +64,6 @@ public class PanelAltaClientes extends javax.swing.JPanel {
         txtApellido1 = new javax.swing.JTextField();
         txtApellido2 = new javax.swing.JTextField();
         btnGuardar = new javax.swing.JButton();
-        btnListaClientes = new javax.swing.JButton();
 
         setLayout(null);
 
@@ -117,16 +116,6 @@ public class PanelAltaClientes extends javax.swing.JPanel {
         });
         add(btnGuardar);
         btnGuardar.setBounds(180, 180, 90, 24);
-
-        btnListaClientes.setText("Lista Clientes");
-        btnListaClientes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnListaClientes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnListaClientesActionPerformed(evt);
-            }
-        });
-        add(btnListaClientes);
-        btnListaClientes.setBounds(260, 10, 130, 30);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
@@ -150,15 +139,9 @@ public class PanelAltaClientes extends javax.swing.JPanel {
         acciones.guardarCliente();
     }//GEN-LAST:event_btnGuardarMouseClicked
 
-    private void btnListaClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaClientesActionPerformed
-        // TODO add your handling code here:
-        acciones.listAllClients();
-    }//GEN-LAST:event_btnListaClientesActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;
-    private javax.swing.JButton btnListaClientes;
     private javax.swing.JLabel lblApellido1;
     private javax.swing.JLabel lblApellido2;
     private javax.swing.JLabel lblNombre;

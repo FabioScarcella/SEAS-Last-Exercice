@@ -169,4 +169,101 @@ public class AccionesDB {
             tabla.addRow(filaTabla);
         }
     }
+    
+    /**
+     * Funcion que lleva la lógica principal para editar un cliente de la BDD
+     * @param numeroCliente es el ID que la BDD asigna a un cliente al registrarlo
+     * @param nombre 
+     * @param apellido1
+     * @param apellido2 
+     */
+    public void editaCliente(String numeroCliente, String nombre, String apellido1,
+            String apellido2){
+        try{
+            Class.forName(DRIVER_JDBC);
+            
+            conn = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+            
+            nombre = comprobarVariables(numeroCliente, nombre, "nombre");
+            apellido1 = comprobarVariables(numeroCliente, apellido1, "apellido1");
+            apellido2 = comprobarVariables(numeroCliente, apellido2, "apellido2");
+            
+            actualizaCliente(numeroCliente, nombre, apellido1, apellido2);
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            try{
+                if(conn != null){
+                    conn.close();
+                    conn = null;
+                }
+            }catch(SQLException se){
+                se.printStackTrace();
+            }
+        }
+    }
+    
+    /**
+     * Funcion que comprueba si hemos añadido un valor para modificarlo, o si
+     * lo hemos dejado vacio, si lo hemos dejado vacio coge el valor que tenía
+     * antes 
+     * @param numeroCliente
+     * @param nombre
+     * @param columnaBDD que columna queremos editar, nombre, apellido1, etc
+     * @return 
+     */
+    private String comprobarVariables(String numeroCliente, String nombre,
+            String columnaBDD){
+        if("".equals(nombre)){
+            try{
+                
+                PreparedStatement statement = conn.prepareStatement(
+                    "SELECT ? FROM clientesDB WHERE NumeroCliente = ?");
+                statement.setString(1, columnaBDD);
+                statement.setString(2, numeroCliente);
+                
+                ResultSet rs = statement.executeQuery();
+                
+                /*
+                Comprobamos que haya devuelto algun parametro 
+                para evitar errores.
+                Y solo nos devolvera 1 parametro ya que el 
+                numeroCliente no puede estar repetida en la BDD
+                */
+                
+                while(rs.next()){
+                    nombre = rs.getString(1);
+                }
+            }catch(SQLException se){
+                se.printStackTrace();
+            }
+        }
+        return nombre;
+    }
+    
+    /**
+     * Creamos un preparedStatement para hacer un update del usuario deseado
+     * @param numeroCliente
+     * @param nombre
+     * @param apellido1
+     * @param apellido2 
+     */
+    private void actualizaCliente(String numeroCliente, String nombre,
+            String apellido1, String apellido2){
+        try{
+            PreparedStatement stat = conn.prepareStatement(
+            "UPDATE clientesDB SET nombre = ?, apellido1 = ?, apellido2 = ? "
+                    + "WHERE NumeroCliente = ?");
+            stat.setString(1, nombre);
+            stat.setString(2, apellido1);
+            stat.setString(3, apellido2);
+            stat.setString(4, numeroCliente);
+            
+            stat.executeUpdate();
+            
+        }catch(SQLException se){
+            se.printStackTrace();
+        }
+    }
 }
