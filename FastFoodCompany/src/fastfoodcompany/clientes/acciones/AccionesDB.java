@@ -296,4 +296,54 @@ public class AccionesDB {
             se.printStackTrace();
         }
     }
+    
+    
+    /**
+     * Comprueba que existe el numeroCliente introducido y lo elimina si existe
+     * @param numeroCliente 
+     */
+    public void bajaCliente(String numeroCliente){
+        try{
+            Class.forName(DRIVER_JDBC);
+            
+            conn = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+            
+            if(!compruebaNumeroCliente(numeroCliente)){
+                System.out.println("No usuario");
+                return;
+            }
+            
+            eliminaCliente(numeroCliente);
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            try{
+                if(conn != null){
+                    conn.close();
+                    conn = null;
+                }
+            }catch(SQLException se){
+                se.printStackTrace();
+            }
+        }
+    }
+    
+    /**
+     * Query para eliminar al cliente deseado
+     * @param numeroCliente 
+     */
+    private void eliminaCliente(String numeroCliente){
+        try{
+            PreparedStatement stat = conn.prepareStatement(
+            "DELETE FROM clientesDB where NumeroCliente = ?");
+            
+            stat.setString(1, numeroCliente);
+            
+            stat.executeUpdate();
+            
+        }catch(SQLException se){
+            se.printStackTrace();
+        }
+    }
 }

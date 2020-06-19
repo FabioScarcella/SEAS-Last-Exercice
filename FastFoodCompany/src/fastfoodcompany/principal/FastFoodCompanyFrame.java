@@ -6,6 +6,7 @@
 package fastfoodcompany.principal;
 
 import fastfoodcompany.clientes.vistas.PanelAltaClientes;
+import fastfoodcompany.clientes.vistas.PanelBajaCliente;
 import fastfoodcompany.clientes.vistas.PanelEditaCliente;
 import fastfoodcompany.clientes.vistas.PanelListaClientes;
 import java.util.ArrayList;
@@ -73,7 +74,6 @@ public class FastFoodCompanyFrame extends javax.swing.JFrame {
         mnuCliente.add(mnuAltaCliente);
 
         mnuEditaCliente.setText("Edita Cliente");
-        mnuEditaCliente.setActionCommand("Edita Cliente");
         mnuEditaCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 mnuEditaClienteMousePressed(evt);
@@ -90,6 +90,11 @@ public class FastFoodCompanyFrame extends javax.swing.JFrame {
         mnuCliente.add(mnuEditaCliente);
 
         mnuBajaCliente.setText("Baja Cliente");
+        mnuBajaCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                mnuBajaClienteMousePressed(evt);
+            }
+        });
         mnuCliente.add(mnuBajaCliente);
 
         jMenuBar1.add(mnuCliente);
@@ -167,6 +172,14 @@ public class FastFoodCompanyFrame extends javax.swing.JFrame {
         panelContenedor.add(panelEditaCliente, java.awt.BorderLayout.CENTER);
         pack();
     }//GEN-LAST:event_mnuEditaClienteMousePressed
+
+    private void mnuBajaClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnuBajaClienteMousePressed
+        // TODO add your handling code here:
+        limpiarPanel();
+        PanelBajaCliente panelBajaCliente = new PanelBajaCliente(this);
+        panelContenedor.add(panelBajaCliente, java.awt.BorderLayout.CENTER);
+        pack();
+    }//GEN-LAST:event_mnuBajaClienteMousePressed
 
     /**
      * @param args the command line arguments

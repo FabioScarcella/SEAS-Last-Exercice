@@ -20,7 +20,6 @@
             <MenuItem class="javax.swing.JMenuItem" name="mnuEditaCliente">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Edita Cliente"/>
-                <Property name="actionCommand" type="java.lang.String" value="Edita Cliente"/>
               </Properties>
               <Events>
                 <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="mnuEditaClienteMousePressed"/>
@@ -32,6 +31,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Baja Cliente"/>
               </Properties>
+              <Events>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="mnuBajaClienteMousePressed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
