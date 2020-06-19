@@ -184,6 +184,11 @@ public class AccionesDB {
             
             conn = DriverManager.getConnection(DB_URL, USER, PASSWORD);
             
+            if(!compruebaNumeroCliente(numeroCliente)){
+                System.out.println("No usuario");
+                return;
+            }
+            
             nombre = comprobarVariables(numeroCliente, nombre, "nombre");
             apellido1 = comprobarVariables(numeroCliente, apellido1, "apellido1");
             apellido2 = comprobarVariables(numeroCliente, apellido2, "apellido2");
@@ -201,6 +206,31 @@ public class AccionesDB {
             }catch(SQLException se){
                 se.printStackTrace();
             }
+        }
+    }
+    
+    /**
+     * Comprueba que el numeroCliente introducido sea valido y haya un cliente
+     * con ese numeroCliente
+     * @param numeroCliente
+     * @return si hay un usuario con ese numeroCliente, devuelve true, sino false
+     */
+    private boolean compruebaNumeroCliente(String numeroCliente){
+        boolean returnState = false;
+        try{
+            PreparedStatement stat = conn.prepareStatement(
+            "SELECT * FROM clientesDB where NumeroCliente = ?");
+            stat.setString(1, numeroCliente);
+            ResultSet rs = stat.executeQuery();
+            
+            if(rs.next()){
+                System.out.println("Hay valor");
+                returnState = true;
+            }
+        }catch(SQLException se){
+            se.printStackTrace();
+        }finally{
+            return returnState;
         }
     }
     
@@ -243,7 +273,7 @@ public class AccionesDB {
     }
     
     /**
-     * Creamos un preparedStatement para hacer un update del usuario deseado
+     * Creamos un preparedStatement para hacer un update del usuario deseado 
      * @param numeroCliente
      * @param nombre
      * @param apellido1
