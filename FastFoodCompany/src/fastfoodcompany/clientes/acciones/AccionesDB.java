@@ -82,11 +82,15 @@ public class AccionesDB {
     private void insertaCliente(String nombre, String apellido1, String apellido2){
         try{
          PreparedStatement ps = conn.prepareStatement(
-         "INSERT INTO clientesDB VALUES (?, ?, ?)");
+         "INSERT INTO clientesDB VALUES (?, ?, ?, ?)");
          
-         ps.setString(1, nombre);
-         ps.setString(2, apellido1);
-         ps.setString(3, apellido2);
+         ps.setInt(1, 0); //TENEMOS QUE AÑADIR UN INT PARA QUE NO DE UN ERROR
+                            //LA BDD, DE ESTA MANERA LA MISMA BDD SE ENCARGARA 
+                            //DE INCREMENTAR Y Y NO REPETIR EL MISMO NUMERO PARA
+                            //LOS CLIENTES, ES 0 PERO PODRIA SER CUALQUIER NUMERO
+         ps.setString(2, nombre);
+         ps.setString(3, apellido1);
+         ps.setString(4, apellido2);
          
          ps.executeUpdate();
          
@@ -134,8 +138,8 @@ public class AccionesDB {
             ResultSet rs = stmt.executeQuery(SQL_SELECT_TODO);
             
             while(rs.next()){
-                clientes.add(rs.getString(1) + "," + rs.getString(2) +
-                       "," + rs.getString(3));
+                clientes.add(rs.getString(1) + "," + rs.getString(2) 
+                        + "," + rs.getString(3) + "," + rs.getString(4));
             }
         }catch(SQLException se){
             se.printStackTrace();
@@ -156,10 +160,11 @@ public class AccionesDB {
             String[] splitString =  dataCliente.split(",");
 
             Vector filaTabla = new Vector();
-
+            
             filaTabla.add(splitString[0]);
             filaTabla.add(splitString[1]);
             filaTabla.add(splitString[2]);
+            filaTabla.add(splitString[3]);
 
             tabla.addRow(filaTabla);
         }

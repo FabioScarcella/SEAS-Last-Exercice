@@ -53,6 +53,7 @@ public class FastFoodCompanyFrame extends javax.swing.JFrame {
         mnuEditaCliente = new javax.swing.JMenuItem();
         mnuBajaCliente = new javax.swing.JMenuItem();
         mnuEmpleados = new javax.swing.JMenu();
+        mnuListaClientes = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,7 +71,7 @@ public class FastFoodCompanyFrame extends javax.swing.JFrame {
         });
         mnuCliente.add(mnuAltaCliente);
 
-        mnuEditaCliente.setText("EditaCliente");
+        mnuEditaCliente.setText("Edita Cliente");
         mnuEditaCliente.setActionCommand("Edita Cliente");
         mnuEditaCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,6 +91,23 @@ public class FastFoodCompanyFrame extends javax.swing.JFrame {
                 mnuEmpleadosMouseClicked(evt);
             }
         });
+
+        mnuListaClientes.setText("Lista Clientes");
+        mnuListaClientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                mnuListaClientesMousePressed(evt);
+            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mnuListaClientesMouseClicked(evt);
+            }
+        });
+        mnuListaClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuListaClientesActionPerformed(evt);
+            }
+        });
+        mnuEmpleados.add(mnuListaClientes);
+
         jMenuBar1.add(mnuEmpleados);
 
         setJMenuBar(jMenuBar1);
@@ -111,11 +129,23 @@ public class FastFoodCompanyFrame extends javax.swing.JFrame {
 
     private void mnuEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnuEmpleadosMouseClicked
         // TODO add your handling code here:
+    }//GEN-LAST:event_mnuEmpleadosMouseClicked
+
+    private void mnuListaClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuListaClientesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnuListaClientesActionPerformed
+
+    private void mnuListaClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnuListaClientesMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnuListaClientesMouseClicked
+
+    private void mnuListaClientesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnuListaClientesMousePressed
+        // TODO add your handling code here:
         limpiarPanel();
         PanelListaClientes panelListaClientes = new PanelListaClientes(this);
         panelContenedor.add(panelListaClientes, java.awt.BorderLayout.CENTER);
         pack();
-    }//GEN-LAST:event_mnuEmpleadosMouseClicked
+    }//GEN-LAST:event_mnuListaClientesMousePressed
 
     /**
      * @param args the command line arguments
@@ -159,6 +189,7 @@ public class FastFoodCompanyFrame extends javax.swing.JFrame {
     private javax.swing.JMenu mnuCliente;
     private javax.swing.JMenuItem mnuEditaCliente;
     private javax.swing.JMenu mnuEmpleados;
+    private javax.swing.JMenuItem mnuListaClientes;
     private javax.swing.JPanel panelContenedor;
     // End of variables declaration//GEN-END:variables
 }

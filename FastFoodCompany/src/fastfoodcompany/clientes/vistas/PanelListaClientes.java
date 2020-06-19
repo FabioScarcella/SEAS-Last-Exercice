@@ -42,7 +42,7 @@ public class PanelListaClientes extends javax.swing.JPanel {
      */
     public void cargaTabla(){
         tabla = new DefaultTableModel(new String[]{
-            "Nombre", "P Apellido", "S Apellido"
+            "Numero Cliente", "Nombre", "P Apellido", "S Apellido"
         }, 0);
         
         tblClientes.setModel(tabla);        
@@ -71,17 +71,17 @@ public class PanelListaClientes extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblClientes = new javax.swing.JTable();
 
-        setLayout(new java.awt.GridLayout());
+        setLayout(new java.awt.GridLayout(1, 0));
 
         tblClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Nombre", "Apellido 1", "Apellido 2"
+                "Numero de cliente", "Nombre", "Apellido 1", "Apellido 2"
             }
         ));
         tblClientes.setRowHeight(20);
