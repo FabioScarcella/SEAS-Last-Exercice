@@ -92,6 +92,7 @@ public class PanelEditaCliente extends javax.swing.JPanel {
         btnGuardar.setBounds(230, 230, 81, 24);
 
         lblTexoInfo.setText("Parámetros que deseas cambiar");
+        lblTexoInfo.setToolTipText("No necesitas introducir todos los campos, solo los que desees");
         add(lblTexoInfo);
         lblTexoInfo.setBounds(30, 70, 290, 14);
 
