@@ -57,60 +57,35 @@ public class PanelBajaCliente extends javax.swing.JPanel {
         txtNumeroCliente = new javax.swing.JTextField();
         lblNoValor = new javax.swing.JLabel();
 
+        setLayout(null);
+
         btnGuardar.setText("Eliminar");
         btnGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btnGuardarMousePressed(evt);
             }
         });
+        add(btnGuardar);
+        btnGuardar.setBounds(220, 100, 100, 24);
 
         lblNumeroCliente.setText("Número del cliente a eliminar:");
+        add(lblNumeroCliente);
+        lblNumeroCliente.setBounds(30, 40, 221, 14);
 
         txtNumeroCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNumeroClienteActionPerformed(evt);
             }
         });
+        add(txtNumeroCliente);
+        txtNumeroCliente.setBounds(260, 40, 60, 18);
 
         lblNoValor.setForeground(new java.awt.Color(255, 0, 0));
+        lblNoValor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNoValor.setText("El número de cliente no es válido");
         lblNoValor.setToolTipText("Comprueba el número de los clientes en la Lista");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblNumeroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(54, 54, 54)
-                        .addComponent(txtNumeroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblNoValor))
-                .addContainerGap(64, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(190, 254, Short.MAX_VALUE)
-                    .addComponent(btnGuardar)
-                    .addGap(0, 66, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(74, 74, 74)
-                .addComponent(lblNoValor)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNumeroCliente)
-                    .addComponent(txtNumeroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(176, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 254, Short.MAX_VALUE)
-                    .addComponent(btnGuardar)
-                    .addGap(0, 22, Short.MAX_VALUE)))
-        );
+        add(lblNoValor);
+        lblNoValor.setBounds(30, 70, 293, 14);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMousePressed

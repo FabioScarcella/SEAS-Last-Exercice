@@ -83,13 +83,15 @@ public class PanelEditaCliente extends javax.swing.JPanel {
         txtNombre.setBounds(120, 110, 60, 18);
 
         btnGuardar.setText("Guardar");
+        btnGuardar.setMaximumSize(new java.awt.Dimension(120, 24));
+        btnGuardar.setPreferredSize(new java.awt.Dimension(90, 24));
         btnGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btnGuardarMousePressed(evt);
             }
         });
         add(btnGuardar);
-        btnGuardar.setBounds(230, 230, 81, 24);
+        btnGuardar.setBounds(230, 230, 100, 24);
 
         lblTexoInfo.setText("Parámetros que deseas cambiar");
         lblTexoInfo.setToolTipText("No necesitas introducir todos los campos, solo los que desees");
@@ -124,7 +126,7 @@ public class PanelEditaCliente extends javax.swing.JPanel {
         lblNoValido.setText("El número de cliente introducido no es válido");
         lblNoValido.setToolTipText("Comprueba el número de cliente en la lista");
         add(lblNoValido);
-        lblNoValido.setBounds(30, 270, 290, 20);
+        lblNoValido.setBounds(50, 200, 290, 20);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtNumeroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroClienteActionPerformed

@@ -87,15 +87,15 @@ public class PanelAltaClientes extends javax.swing.JPanel {
 
         lblNombre.setText("Nombre");
         add(lblNombre);
-        lblNombre.setBounds(80, 60, 80, 14);
+        lblNombre.setBounds(30, 30, 80, 14);
 
         lblApellido1.setText("Apellido 1");
         add(lblApellido1);
-        lblApellido1.setBounds(80, 100, 80, 14);
+        lblApellido1.setBounds(30, 70, 80, 14);
 
         lblApellido2.setText("Apellido 2");
         add(lblApellido2);
-        lblApellido2.setBounds(80, 140, 80, 14);
+        lblApellido2.setBounds(30, 110, 80, 14);
 
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,7 +103,7 @@ public class PanelAltaClientes extends javax.swing.JPanel {
             }
         });
         add(txtNombre);
-        txtNombre.setBounds(160, 60, 110, 18);
+        txtNombre.setBounds(130, 30, 110, 18);
 
         txtApellido1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,7 +111,7 @@ public class PanelAltaClientes extends javax.swing.JPanel {
             }
         });
         add(txtApellido1);
-        txtApellido1.setBounds(160, 100, 110, 18);
+        txtApellido1.setBounds(130, 70, 110, 18);
 
         txtApellido2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,7 +119,7 @@ public class PanelAltaClientes extends javax.swing.JPanel {
             }
         });
         add(txtApellido2);
-        txtApellido2.setBounds(160, 140, 110, 18);
+        txtApellido2.setBounds(130, 110, 110, 18);
 
         btnGuardar.setText("Guardar");
         btnGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -133,13 +133,14 @@ public class PanelAltaClientes extends javax.swing.JPanel {
             }
         });
         add(btnGuardar);
-        btnGuardar.setBounds(180, 180, 90, 24);
+        btnGuardar.setBounds(140, 180, 100, 24);
 
-        lblValorNoCorrecto.setForeground(new java.awt.Color(204, 0, 0));
-        lblValorNoCorrecto.setText("Algun valor no es correcto");
+        lblValorNoCorrecto.setForeground(new java.awt.Color(255, 0, 51));
+        lblValorNoCorrecto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblValorNoCorrecto.setText("Algun valor no es válido");
         lblValorNoCorrecto.setToolTipText("Revisa los valores introducidos y vuelve a probarlo");
         add(lblValorNoCorrecto);
-        lblValorNoCorrecto.setBounds(80, 30, 190, 14);
+        lblValorNoCorrecto.setBounds(30, 150, 210, 14);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
