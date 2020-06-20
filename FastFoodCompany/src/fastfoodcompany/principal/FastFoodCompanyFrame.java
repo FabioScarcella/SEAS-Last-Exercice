@@ -45,8 +45,8 @@ public class FastFoodCompanyFrame extends javax.swing.JFrame {
         mnuAltaCliente = new javax.swing.JMenuItem();
         mnuEditaCliente = new javax.swing.JMenuItem();
         mnuBajaCliente = new javax.swing.JMenuItem();
-        mnuEmpleados = new javax.swing.JMenu();
         mnuListaClientes = new javax.swing.JMenuItem();
+        mnuEmpleados = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -88,15 +88,6 @@ public class FastFoodCompanyFrame extends javax.swing.JFrame {
         });
         mnuCliente.add(mnuBajaCliente);
 
-        jMenuBar1.add(mnuCliente);
-
-        mnuEmpleados.setText("Empleados");
-        mnuEmpleados.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                mnuEmpleadosMouseClicked(evt);
-            }
-        });
-
         mnuListaClientes.setText("Lista Clientes");
         mnuListaClientes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -111,8 +102,16 @@ public class FastFoodCompanyFrame extends javax.swing.JFrame {
                 mnuListaClientesActionPerformed(evt);
             }
         });
-        mnuEmpleados.add(mnuListaClientes);
+        mnuCliente.add(mnuListaClientes);
 
+        jMenuBar1.add(mnuCliente);
+
+        mnuEmpleados.setText("Empleados");
+        mnuEmpleados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mnuEmpleadosMouseClicked(evt);
+            }
+        });
         jMenuBar1.add(mnuEmpleados);
 
         setJMenuBar(jMenuBar1);
