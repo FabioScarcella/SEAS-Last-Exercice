@@ -49,6 +49,8 @@ public class AccionesBajaCliente extends AccionesConexionBDD{
         eliminaCliente(numeroCliente);
             
         desconectaBDD();
+        
+        panel.borraVariables();
     }
     
     /**

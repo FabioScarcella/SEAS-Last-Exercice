@@ -65,6 +65,8 @@ public class AccionesEditaCliente extends AccionesConexionBDD{
         actualizaCliente(numeroCliente, nombre, apellido1, apellido2);
             
         desconectaBDD();
+        
+        panel.borraVariables();
     }
     
     /**

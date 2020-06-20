@@ -32,8 +32,6 @@ public class AccionesAltaClientes extends AccionesConexionBDD{
         filaCliente.add(panel.getTxtApellido2().getText());
         
         guardarCliente(filaCliente);
-        
-        panel.getFrame().getClientesGuardados().add(filaCliente);
     }
     
     /**
@@ -53,7 +51,7 @@ public class AccionesAltaClientes extends AccionesConexionBDD{
         
         desconectaBDD();
         
-        
+        panel.borraVariables();
     }
     
     /**

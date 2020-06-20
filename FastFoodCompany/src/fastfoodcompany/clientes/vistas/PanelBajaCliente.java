@@ -22,6 +22,15 @@ public class PanelBajaCliente extends javax.swing.JPanel {
         this.frame = frame;
     }
     
+    
+    /**
+     * Al borrar un cliente, la variable numeroCliente se resetea por si se desea
+     * eliminar a mas de uno
+     */
+    public void borraVariables(){
+        txtNumeroCliente.setText("");
+    }
+    
     //Getters
     
     public javax.swing.JTextField getTxtNumeroCliente(){

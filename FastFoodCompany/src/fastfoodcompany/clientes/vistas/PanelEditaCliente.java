@@ -22,6 +22,17 @@ public class PanelEditaCliente extends javax.swing.JPanel {
         this.frame = frame;
     }
     
+    /**
+     * Al editar un cliente, las variables se resetean por si se desea
+     * editar a mas de uno
+     */
+    public void borraVariables(){
+        txtNumeroCliente.setText("");
+        txtNombre.setText("");
+        txtApellido1.setText("");
+        txtApellido2.setText("");
+    }
+    
     //Getters
     public javax.swing.JTextField getTxtNumeroCliente(){
         return txtNumeroCliente;

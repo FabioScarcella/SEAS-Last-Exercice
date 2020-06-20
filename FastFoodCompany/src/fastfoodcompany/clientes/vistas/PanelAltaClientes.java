@@ -33,6 +33,16 @@ public class PanelAltaClientes extends javax.swing.JPanel {
         this.frame = frame;
     }
     
+    /**
+     * Una vez completado el guardado del cliente, se eliminaran los valores
+     * para poder añadir otro cliente nuevo
+     */
+    public void borraVariables(){
+        txtApellido1.setText("");
+        txtApellido2.setText("");
+        txtNombre.setText("");
+    }
+    
     
     /*
     Setters and getters
