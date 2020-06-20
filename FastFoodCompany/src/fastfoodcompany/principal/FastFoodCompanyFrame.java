@@ -16,8 +16,6 @@ import java.util.ArrayList;
  * @author Fabio
  */
 public class FastFoodCompanyFrame extends javax.swing.JFrame {
-
-    public ArrayList clientesGuardados = new ArrayList();
     
     /**
      * Creates new form FastFoodCompanyFrame
@@ -30,13 +28,6 @@ public class FastFoodCompanyFrame extends javax.swing.JFrame {
      */
     private void limpiarPanel(){
         panelContenedor.removeAll();
-    }
-    
-    public ArrayList getClientesGuardados(){
-        return clientesGuardados;
-    }
-    public void setClientesGuardados(ArrayList clientesGuardados){
-        this.clientesGuardados = clientesGuardados;
     }
 
     /**

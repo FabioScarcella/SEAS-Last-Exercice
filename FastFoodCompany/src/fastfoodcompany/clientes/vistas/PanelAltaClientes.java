@@ -23,6 +23,8 @@ public class PanelAltaClientes extends javax.swing.JPanel {
         this.frame = frame;
         this.acciones = new AccionesAltaClientes(this);
         initComponents();
+        
+       cambiarEstadoLblValorNoCorrecto(false);
     }
     
     public FastFoodCompanyFrame getFrame(){
@@ -41,6 +43,11 @@ public class PanelAltaClientes extends javax.swing.JPanel {
         txtApellido1.setText("");
         txtApellido2.setText("");
         txtNombre.setText("");
+        cambiarEstadoLblValorNoCorrecto(false);
+    }
+    
+    public void cambiarEstadoLblValorNoCorrecto(boolean state){
+         lblValorNoCorrecto.setVisible(state);
     }
     
     
@@ -74,6 +81,7 @@ public class PanelAltaClientes extends javax.swing.JPanel {
         txtApellido1 = new javax.swing.JTextField();
         txtApellido2 = new javax.swing.JTextField();
         btnGuardar = new javax.swing.JButton();
+        lblValorNoCorrecto = new javax.swing.JLabel();
 
         setLayout(null);
 
@@ -126,6 +134,12 @@ public class PanelAltaClientes extends javax.swing.JPanel {
         });
         add(btnGuardar);
         btnGuardar.setBounds(180, 180, 90, 24);
+
+        lblValorNoCorrecto.setForeground(new java.awt.Color(204, 0, 0));
+        lblValorNoCorrecto.setText("Algun valor no es correcto");
+        lblValorNoCorrecto.setToolTipText("Revisa los valores introducidos y vuelve a probarlo");
+        add(lblValorNoCorrecto);
+        lblValorNoCorrecto.setBounds(80, 30, 190, 14);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
@@ -155,6 +169,7 @@ public class PanelAltaClientes extends javax.swing.JPanel {
     private javax.swing.JLabel lblApellido1;
     private javax.swing.JLabel lblApellido2;
     private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblValorNoCorrecto;
     private javax.swing.JTextField txtApellido1;
     private javax.swing.JTextField txtApellido2;
     private javax.swing.JTextField txtNombre;

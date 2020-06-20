@@ -27,9 +27,18 @@ public class AccionesAltaClientes extends AccionesConexionBDD{
     public void guardarCliente(){
         ArrayList filaCliente = new ArrayList();
         
-        filaCliente.add(panel.getTxtNombre().getText());
-        filaCliente.add(panel.getTxtApellido1().getText());
-        filaCliente.add(panel.getTxtApellido2().getText());
+        String nombre = panel.getTxtNombre().getText();
+        String apellido1 = panel.getTxtApellido1().getText();
+        String apellido2 = panel.getTxtApellido2().getText();
+        
+        if(nombre.isEmpty() || apellido1.isEmpty() || apellido2.isEmpty()){
+            errorAlGuardarUnCliente();
+            return;
+        }
+        
+        filaCliente.add(nombre);
+        filaCliente.add(apellido1);
+        filaCliente.add(apellido2);
         
         guardarCliente(filaCliente);
     }
@@ -81,4 +90,8 @@ public class AccionesAltaClientes extends AccionesConexionBDD{
         }
     }
     
+    
+    private void errorAlGuardarUnCliente(){
+        panel.cambiarEstadoLblValorNoCorrecto(true);
+    }
 }
