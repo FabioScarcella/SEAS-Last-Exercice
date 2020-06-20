@@ -5,7 +5,7 @@
  */
 package fastfoodcompany.clientes.vistas;
 
-import fastfoodcompany.clientes.acciones.AccionesDB;
+import fastfoodcompany.clientes.acciones.AccionesListaClientes;
 import fastfoodcompany.principal.FastFoodCompanyFrame;
 import javax.swing.table.DefaultTableModel;
 
@@ -33,7 +33,7 @@ public class PanelListaClientes extends javax.swing.JPanel {
      * todos los clientes que tenemos creados y guardados
      */
     private void inizializaLista(){
-        AccionesDB accionesDB = new AccionesDB(tabla);
+        AccionesListaClientes accionesDB = new AccionesListaClientes(tabla);
         accionesDB.listaClientesGuardados();
     }
     
