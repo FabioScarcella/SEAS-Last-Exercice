@@ -20,6 +20,7 @@ public class PanelEditaCliente extends javax.swing.JPanel {
     public PanelEditaCliente(FastFoodCompanyFrame frame) {
         initComponents();
         this.frame = frame;
+        estadoLblNoValido(false);
     }
     
     /**
@@ -31,6 +32,11 @@ public class PanelEditaCliente extends javax.swing.JPanel {
         txtNombre.setText("");
         txtApellido1.setText("");
         txtApellido2.setText("");
+        estadoLblNoValido(false);
+    }
+    
+    public void estadoLblNoValido(boolean state){
+        lblNoValido.setVisible(state);
     }
     
     //Getters
@@ -66,6 +72,7 @@ public class PanelEditaCliente extends javax.swing.JPanel {
         lblApellido2 = new javax.swing.JLabel();
         lblNumeroCliente = new javax.swing.JLabel();
         lblNombre = new javax.swing.JLabel();
+        lblNoValido = new javax.swing.JLabel();
 
         setLayout(null);
         add(txtApellido1);
@@ -82,7 +89,7 @@ public class PanelEditaCliente extends javax.swing.JPanel {
             }
         });
         add(btnGuardar);
-        btnGuardar.setBounds(220, 220, 81, 24);
+        btnGuardar.setBounds(230, 230, 81, 24);
 
         lblTexoInfo.setText("Parámetros que deseas cambiar");
         add(lblTexoInfo);
@@ -111,6 +118,12 @@ public class PanelEditaCliente extends javax.swing.JPanel {
         lblNombre.setText("Nombre:");
         add(lblNombre);
         lblNombre.setBounds(30, 110, 90, 14);
+
+        lblNoValido.setForeground(new java.awt.Color(255, 0, 0));
+        lblNoValido.setText("El número de cliente introducido no es válido");
+        lblNoValido.setToolTipText("Comprueba el número de cliente en la lista");
+        add(lblNoValido);
+        lblNoValido.setBounds(30, 270, 290, 20);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtNumeroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroClienteActionPerformed
@@ -128,6 +141,7 @@ public class PanelEditaCliente extends javax.swing.JPanel {
     private javax.swing.JButton btnGuardar;
     private javax.swing.JLabel lblApellido1;
     private javax.swing.JLabel lblApellido2;
+    private javax.swing.JLabel lblNoValido;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblNumeroCliente;
     private javax.swing.JLabel lblTexoInfo;

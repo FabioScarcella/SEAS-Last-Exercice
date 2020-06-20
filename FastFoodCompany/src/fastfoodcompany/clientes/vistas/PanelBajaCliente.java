@@ -20,6 +20,7 @@ public class PanelBajaCliente extends javax.swing.JPanel {
     public PanelBajaCliente(FastFoodCompanyFrame frame) {
         initComponents();
         this.frame = frame;
+        estadoLblNoValor(false);
     }
     
     
@@ -29,6 +30,11 @@ public class PanelBajaCliente extends javax.swing.JPanel {
      */
     public void borraVariables(){
         txtNumeroCliente.setText("");
+        estadoLblNoValor(false);
+    }
+    
+    public void estadoLblNoValor(boolean state){
+        lblNoValor.setVisible(state);
     }
     
     //Getters
@@ -49,6 +55,7 @@ public class PanelBajaCliente extends javax.swing.JPanel {
         btnGuardar = new javax.swing.JButton();
         lblNumeroCliente = new javax.swing.JLabel();
         txtNumeroCliente = new javax.swing.JTextField();
+        lblNoValor = new javax.swing.JLabel();
 
         btnGuardar.setText("Eliminar");
         btnGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -65,15 +72,22 @@ public class PanelBajaCliente extends javax.swing.JPanel {
             }
         });
 
+        lblNoValor.setForeground(new java.awt.Color(255, 0, 0));
+        lblNoValor.setText("El número de cliente no es válido");
+        lblNoValor.setToolTipText("Comprueba el número de los clientes en la Lista");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblNumeroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54)
-                .addComponent(txtNumeroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblNumeroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(54, 54, 54)
+                        .addComponent(txtNumeroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblNoValor))
                 .addContainerGap(64, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -84,7 +98,9 @@ public class PanelBajaCliente extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(106, 106, 106)
+                .addGap(74, 74, 74)
+                .addComponent(lblNoValor)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNumeroCliente)
                     .addComponent(txtNumeroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -111,6 +127,7 @@ public class PanelBajaCliente extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JLabel lblNoValor;
     private javax.swing.JLabel lblNumeroCliente;
     private javax.swing.JTextField txtNumeroCliente;
     // End of variables declaration//GEN-END:variables

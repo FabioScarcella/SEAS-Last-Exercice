@@ -42,7 +42,7 @@ public class AccionesBajaCliente extends AccionesConexionBDD{
         conectaBDD();
 
         if(!compruebaNumeroCliente(numeroCliente)){
-            System.out.println("No usuario");
+            panel.estadoLblNoValor(true);
             return;
         }
 

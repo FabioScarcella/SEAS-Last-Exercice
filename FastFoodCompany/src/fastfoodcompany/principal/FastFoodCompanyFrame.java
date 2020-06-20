@@ -50,7 +50,7 @@ public class FastFoodCompanyFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        panelContenedor.setPreferredSize(new java.awt.Dimension(600, 600));
+        panelContenedor.setPreferredSize(new java.awt.Dimension(800, 800));
         panelContenedor.setLayout(new java.awt.BorderLayout());
         getContentPane().add(panelContenedor, java.awt.BorderLayout.CENTER);
 

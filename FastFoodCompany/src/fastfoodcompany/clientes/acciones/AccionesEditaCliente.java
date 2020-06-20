@@ -54,7 +54,7 @@ public class AccionesEditaCliente extends AccionesConexionBDD{
         conectaBDD();
 
         if(!compruebaNumeroCliente(numeroCliente)){
-            System.out.println("No usuario");
+            panel.estadoLblNoValido(true);
             return;
         }
 
