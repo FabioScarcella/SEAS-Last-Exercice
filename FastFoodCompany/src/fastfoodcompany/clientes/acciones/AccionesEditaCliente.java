@@ -7,9 +7,14 @@ package fastfoodcompany.clientes.acciones;
 
 import static fastfoodcompany.clientes.acciones.AccionesListaClientes.DRIVER_JDBC;
 import fastfoodcompany.clientes.vistas.PanelEditaCliente;
+import fastfoodcompany.principal.FastFoodCompanyFrame;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -62,7 +67,7 @@ public class AccionesEditaCliente extends AccionesConexionBDD{
         apellido1 = comprobarVariables(numeroCliente, apellido1, "apellido1");
         apellido2 = comprobarVariables(numeroCliente, apellido2, "apellido2");
 
-        actualizaCliente(numeroCliente, nombre, apellido1, apellido2);
+        //actualizaCliente(numeroCliente, nombre, apellido1, apellido2);
             
         desconectaBDD();
         
@@ -95,4 +100,66 @@ public class AccionesEditaCliente extends AccionesConexionBDD{
     }
     
     
+    public void verClienteAEditar(FastFoodCompanyFrame frame){
+        panel.cargaTabla();
+        esperaTiempo(150);
+        
+        conectaBDD();
+
+        String numCliente = panel.getTxtNumeroCliente().getText();
+        
+        if(!compruebaNumeroCliente(numCliente)){
+            panel.estadoLblNoValido(true);
+            return;
+        }
+        
+        DefaultTableModel tabla = panel.getTblModel();
+        
+        ArrayList cliente = devolverCliente(numCliente);
+        
+        Vector dataCliente = new Vector();
+        dataCliente.add(cliente.get(0));
+        dataCliente.add(cliente.get(1));
+        dataCliente.add(cliente.get(2));
+        dataCliente.add(cliente.get(3));
+        
+        tabla.addRow(dataCliente);
+        
+        panel.estadoTabla(true);
+        frame.pack();
+        
+        desconectaBDD();
+    }
+    
+    private ArrayList devolverCliente(String numeroCliente){
+        ArrayList cliente = new ArrayList();
+                
+        try{
+            PreparedStatement stat = conn.prepareStatement(
+            "SELECT * from clientesDB WHERE NumeroCliente = ?");
+            stat.setString(1, numeroCliente);
+            
+            ResultSet rs = stat.executeQuery();
+            
+            while(rs.next()){
+                cliente.add(rs.getString(1));
+                cliente.add(rs.getString(2));
+                cliente.add(rs.getString(3));
+                cliente.add(rs.getString(4));
+            }
+            
+        }catch(SQLException se){
+            se.printStackTrace();
+        }
+        
+        return cliente;
+    }
+    
+    private void esperaTiempo(int tiempo){
+        try{
+            Thread.sleep(tiempo);
+        }catch(InterruptedException ie){
+            ie.printStackTrace();
+        }
+    }    
 }

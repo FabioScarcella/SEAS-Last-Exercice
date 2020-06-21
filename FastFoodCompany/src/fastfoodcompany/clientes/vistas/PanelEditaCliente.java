@@ -7,6 +7,7 @@ package fastfoodcompany.clientes.vistas;
 
 import fastfoodcompany.clientes.acciones.AccionesEditaCliente;
 import fastfoodcompany.principal.FastFoodCompanyFrame;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -14,6 +15,8 @@ import fastfoodcompany.principal.FastFoodCompanyFrame;
  */
 public class PanelEditaCliente extends javax.swing.JPanel {
     FastFoodCompanyFrame frame;
+    DefaultTableModel tabla;
+    AccionesEditaCliente accionesEditaCliente;
     /**
      * Creates new form PanelEditaCliente
      */
@@ -21,6 +24,10 @@ public class PanelEditaCliente extends javax.swing.JPanel {
         initComponents();
         this.frame = frame;
         estadoLblNoValido(false);
+        
+        cargaTabla();
+        estadoTabla(false);
+        
     }
     
     /**
@@ -33,10 +40,25 @@ public class PanelEditaCliente extends javax.swing.JPanel {
         txtApellido1.setText("");
         txtApellido2.setText("");
         estadoLblNoValido(false);
+        estadoTabla(false);
+        frame.pack();
     }
     
     public void estadoLblNoValido(boolean state){
         lblNoValido.setVisible(state);
+    }
+    
+    public void estadoTabla(boolean state){
+        pnlTblNumCliente.setVisible(state);
+    }
+    
+    public void cargaTabla(){
+        tabla = new DefaultTableModel(new String[]{
+            "Numero Cliente", "Nombre", "Primer apellido", "Segundo apellido"
+        }, 0);
+        
+        tblNumCliente.setModel(tabla);    
+        
     }
     
     //Getters
@@ -51,6 +73,14 @@ public class PanelEditaCliente extends javax.swing.JPanel {
     }
     public javax.swing.JTextField getTxtApellido2(){
         return txtApellido2;
+    }
+    
+    public javax.swing.JScrollPane getPnlTabla(){
+        return pnlTblNumCliente;
+    }
+    
+    public DefaultTableModel getTblModel(){
+        return tabla;
     }
 
     /**
@@ -73,14 +103,9 @@ public class PanelEditaCliente extends javax.swing.JPanel {
         lblNumeroCliente = new javax.swing.JLabel();
         lblNombre = new javax.swing.JLabel();
         lblNoValido = new javax.swing.JLabel();
-
-        setLayout(null);
-        add(txtApellido1);
-        txtApellido1.setBounds(120, 140, 60, 18);
-        add(txtApellido2);
-        txtApellido2.setBounds(120, 170, 60, 18);
-        add(txtNombre);
-        txtNombre.setBounds(120, 110, 60, 18);
+        btnVerCliente = new javax.swing.JButton();
+        pnlTblNumCliente = new javax.swing.JScrollPane();
+        tblNumCliente = new javax.swing.JTable();
 
         btnGuardar.setText("Guardar");
         btnGuardar.setMaximumSize(new java.awt.Dimension(120, 24));
@@ -90,43 +115,122 @@ public class PanelEditaCliente extends javax.swing.JPanel {
                 btnGuardarMousePressed(evt);
             }
         });
-        add(btnGuardar);
-        btnGuardar.setBounds(230, 230, 100, 24);
 
         lblTexoInfo.setText("Parámetros que deseas cambiar");
         lblTexoInfo.setToolTipText("No necesitas introducir todos los campos, solo los que desees");
-        add(lblTexoInfo);
-        lblTexoInfo.setBounds(30, 70, 290, 14);
 
         txtNumeroCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNumeroClienteActionPerformed(evt);
             }
         });
-        add(txtNumeroCliente);
-        txtNumeroCliente.setBounds(240, 30, 60, 18);
 
         lblApellido1.setText("Apellido 1:");
-        add(lblApellido1);
-        lblApellido1.setBounds(30, 140, 80, 14);
 
         lblApellido2.setText("Apellido 2:");
-        add(lblApellido2);
-        lblApellido2.setBounds(30, 170, 80, 14);
 
         lblNumeroCliente.setText("Número del cliente a editar:");
-        add(lblNumeroCliente);
-        lblNumeroCliente.setBounds(30, 30, 210, 14);
 
         lblNombre.setText("Nombre:");
-        add(lblNombre);
-        lblNombre.setBounds(30, 110, 90, 14);
 
         lblNoValido.setForeground(new java.awt.Color(255, 0, 0));
         lblNoValido.setText("El número de cliente introducido no es válido");
         lblNoValido.setToolTipText("Comprueba el número de cliente en la lista");
-        add(lblNoValido);
-        lblNoValido.setBounds(50, 200, 290, 20);
+
+        btnVerCliente.setText("Ver");
+        btnVerCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnVerClienteMousePressed(evt);
+            }
+        });
+        btnVerCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerClienteActionPerformed(evt);
+            }
+        });
+
+        tblNumCliente.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        pnlTblNumCliente.setViewportView(tblNumCliente);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlTblNumCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(30, 30, 30)
+                            .addComponent(lblNumeroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 0, 0)
+                            .addComponent(txtNumeroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(10, 10, 10)
+                            .addComponent(btnVerCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(30, 30, 30)
+                            .addComponent(lblTexoInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(30, 30, 30)
+                            .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 0, 0)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(30, 30, 30)
+                            .addComponent(lblApellido1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(10, 10, 10)
+                            .addComponent(txtApellido1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(30, 30, 30)
+                            .addComponent(lblApellido2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(10, 10, 10)
+                            .addComponent(txtApellido2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(50, 50, 50)
+                            .addComponent(lblNoValido, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(42, 42, 42))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblNumeroCliente)
+                    .addComponent(txtNumeroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVerCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addComponent(pnlTblNumCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(lblTexoInfo)
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblNombre)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblApellido1)
+                    .addComponent(txtApellido1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblApellido2)
+                    .addComponent(txtApellido2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addComponent(lblNoValido, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtNumeroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroClienteActionPerformed
@@ -135,19 +239,36 @@ public class PanelEditaCliente extends javax.swing.JPanel {
 
     private void btnGuardarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMousePressed
         // TODO add your handling code here:
-        AccionesEditaCliente accionesEditaCliente = new AccionesEditaCliente(this);
+        if(accionesEditaCliente == null){
+            accionesEditaCliente = new AccionesEditaCliente(this);
+        }
         accionesEditaCliente.EditaCliente();
     }//GEN-LAST:event_btnGuardarMousePressed
+
+    private void btnVerClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVerClienteActionPerformed
+
+    private void btnVerClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVerClienteMousePressed
+        // TODO add your handling code here: 
+        if(accionesEditaCliente == null){
+            accionesEditaCliente = new AccionesEditaCliente(this);
+        }
+        accionesEditaCliente.verClienteAEditar(frame);
+    }//GEN-LAST:event_btnVerClienteMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnVerCliente;
     private javax.swing.JLabel lblApellido1;
     private javax.swing.JLabel lblApellido2;
     private javax.swing.JLabel lblNoValido;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblNumeroCliente;
     private javax.swing.JLabel lblTexoInfo;
+    private javax.swing.JScrollPane pnlTblNumCliente;
+    private javax.swing.JTable tblNumCliente;
     private javax.swing.JTextField txtApellido1;
     private javax.swing.JTextField txtApellido2;
     private javax.swing.JTextField txtNombre;

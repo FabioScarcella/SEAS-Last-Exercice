@@ -61,7 +61,6 @@ public class AccionesConexionBDD {
             ResultSet rs = stat.executeQuery();
             
             if(rs.next()){
-                System.out.println("Hay valor");
                 returnState = true;
             }
         }catch(SQLException se){
@@ -82,13 +81,17 @@ public class AccionesConexionBDD {
      */
     protected String comprobarVariables(String numeroCliente, String nombre,
             String columnaBDD){
+        
+        
+        
         if("".equals(nombre)){
             try{
-                
-                PreparedStatement statement = conn.prepareStatement(
-                    "SELECT ? FROM clientesDB WHERE NumeroCliente = ?");
-                statement.setString(1, columnaBDD);
-                statement.setString(2, numeroCliente);
+                System.out.println(columnaBDD);
+                String consulta = 
+                        "SELECT "+ columnaBDD + " FROM clientesDB WHERE NumeroCliente = ?";
+                PreparedStatement statement = conn.prepareStatement(consulta);
+               // statement.setString(1, columnaBDD);
+                statement.setString(1, numeroCliente);
                 
                 ResultSet rs = statement.executeQuery();
                 
@@ -100,6 +103,7 @@ public class AccionesConexionBDD {
                 */
                 
                 while(rs.next()){
+                    System.out.println(rs.getString(1));
                     nombre = rs.getString(1);
                 }
             }catch(SQLException se){
