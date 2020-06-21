@@ -86,7 +86,10 @@ public class AccionesConexionBDD {
         
         if("".equals(nombre)){
             try{
-                System.out.println(columnaBDD);
+                //Se añade el nombre de la columna a solucionar en medio del string
+                //y no en un .setString() ya que sino por algun motivo me devolvia
+                //el nombre de la columna y no el contenido de dentro.
+                //Ejemplo: devolvía siempre nombre y no Pepe
                 String consulta = 
                         "SELECT "+ columnaBDD + " FROM clientesDB WHERE NumeroCliente = ?";
                 PreparedStatement statement = conn.prepareStatement(consulta);

@@ -23,7 +23,7 @@ public class PanelEditaCliente extends javax.swing.JPanel {
     public PanelEditaCliente(FastFoodCompanyFrame frame) {
         initComponents();
         this.frame = frame;
-        estadoLblNoValido(false);
+        estadoLblNoValido(false, "");
         
         cargaTabla();
         estadoTabla(false);
@@ -39,12 +39,13 @@ public class PanelEditaCliente extends javax.swing.JPanel {
         txtNombre.setText("");
         txtApellido1.setText("");
         txtApellido2.setText("");
-        estadoLblNoValido(false);
+        estadoLblNoValido(false, "");
         estadoTabla(false);
         frame.pack();
     }
     
-    public void estadoLblNoValido(boolean state){
+    public void estadoLblNoValido(boolean state, String mensaje){
+        lblNoValido.setText(mensaje);
         lblNoValido.setVisible(state);
     }
     

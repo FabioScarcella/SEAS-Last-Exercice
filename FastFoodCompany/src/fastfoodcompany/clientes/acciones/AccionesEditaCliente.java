@@ -59,15 +59,21 @@ public class AccionesEditaCliente extends AccionesConexionBDD{
         conectaBDD();
 
         if(!compruebaNumeroCliente(numeroCliente)){
-            panel.estadoLblNoValido(true);
+            panel.estadoLblNoValido(true, "Numero de cliente no válido");
             return;
+        }else if(nombre.isEmpty() &&
+                apellido1.isEmpty() && apellido2.isEmpty()){
+             panel.estadoLblNoValido(true, "Pon algún parámetro a modificar");
+            return;
+        }else{ //En caso de que hubiese un mal parametro, y se haya corregido
+             panel.estadoLblNoValido(false, "");
         }
 
         nombre = comprobarVariables(numeroCliente, nombre, "nombre");
         apellido1 = comprobarVariables(numeroCliente, apellido1, "apellido1");
         apellido2 = comprobarVariables(numeroCliente, apellido2, "apellido2");
 
-        //actualizaCliente(numeroCliente, nombre, apellido1, apellido2);
+        actualizaCliente(numeroCliente, nombre, apellido1, apellido2);
             
         desconectaBDD();
         
@@ -109,9 +115,11 @@ public class AccionesEditaCliente extends AccionesConexionBDD{
         String numCliente = panel.getTxtNumeroCliente().getText();
         
         if(!compruebaNumeroCliente(numCliente)){
-            panel.estadoLblNoValido(true);
+            panel.estadoLblNoValido(true, "Numero de cliente no válido");
             return;
         }
+        //En caso de que hubiese un mal parametro, y se haya corregido
+        panel.estadoLblNoValido(false, "");
         
         DefaultTableModel tabla = panel.getTblModel();
         
