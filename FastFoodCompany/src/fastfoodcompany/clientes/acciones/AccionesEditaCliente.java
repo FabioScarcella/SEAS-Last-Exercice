@@ -24,12 +24,12 @@ public class AccionesEditaCliente extends AccionesConexionBDD{
     
     PanelEditaCliente panel;
     AccionesListaClientes accionesDB;
+    DefaultTableModel tabla;
     
     public AccionesEditaCliente(PanelEditaCliente panel){
         this.panel = panel;
         accionesDB = new AccionesListaClientes();
     }
-    
     /**
      * Coge los valores introduciodos por el usuario y llama a la funcion 
      * editaCliente()

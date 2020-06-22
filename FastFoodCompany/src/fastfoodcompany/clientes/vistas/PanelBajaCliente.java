@@ -7,6 +7,7 @@ package fastfoodcompany.clientes.vistas;
 
 import fastfoodcompany.clientes.acciones.AccionesBajaCliente;
 import fastfoodcompany.principal.FastFoodCompanyFrame;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -14,6 +15,8 @@ import fastfoodcompany.principal.FastFoodCompanyFrame;
  */
 public class PanelBajaCliente extends javax.swing.JPanel {
     FastFoodCompanyFrame frame;
+    DefaultTableModel tabla;
+    AccionesBajaCliente accionesBajaCliente;
     /**
      * Creates new form PanelBajaCliente
      */
@@ -21,6 +24,16 @@ public class PanelBajaCliente extends javax.swing.JPanel {
         initComponents();
         this.frame = frame;
         estadoLblNoValor(false);
+        
+        estadoTabla(false);
+    }
+    
+    public void cargaTabla(){
+        tabla = new DefaultTableModel(new String[]{
+            "Numero Cliente", "Nombre", "Primer apellido", "Segundo apellido"
+        }, 0);
+
+        tblCliente.setModel(tabla);    
     }
     
     
@@ -31,16 +44,24 @@ public class PanelBajaCliente extends javax.swing.JPanel {
     public void borraVariables(){
         txtNumeroCliente.setText("");
         estadoLblNoValor(false);
+        estadoTabla(false);
     }
     
     public void estadoLblNoValor(boolean state){
         lblNoValor.setVisible(state);
     }
     
+     public void estadoTabla(boolean state){
+        pnlTablaCliente.setVisible(state);
+    }
+    
     //Getters
     
     public javax.swing.JTextField getTxtNumeroCliente(){
         return txtNumeroCliente;
+    }
+    public DefaultTableModel getTabla(){
+        return tabla;
     }
 
     /**
@@ -56,8 +77,9 @@ public class PanelBajaCliente extends javax.swing.JPanel {
         lblNumeroCliente = new javax.swing.JLabel();
         txtNumeroCliente = new javax.swing.JTextField();
         lblNoValor = new javax.swing.JLabel();
-
-        setLayout(null);
+        pnlTablaCliente = new javax.swing.JScrollPane();
+        tblCliente = new javax.swing.JTable();
+        btnVer = new javax.swing.JButton();
 
         btnGuardar.setText("Eliminar");
         btnGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -65,32 +87,91 @@ public class PanelBajaCliente extends javax.swing.JPanel {
                 btnGuardarMousePressed(evt);
             }
         });
-        add(btnGuardar);
-        btnGuardar.setBounds(220, 100, 100, 24);
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
         lblNumeroCliente.setText("Número del cliente a eliminar:");
-        add(lblNumeroCliente);
-        lblNumeroCliente.setBounds(30, 40, 221, 14);
 
         txtNumeroCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNumeroClienteActionPerformed(evt);
             }
         });
-        add(txtNumeroCliente);
-        txtNumeroCliente.setBounds(260, 40, 60, 18);
 
         lblNoValor.setForeground(new java.awt.Color(255, 0, 0));
         lblNoValor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNoValor.setText("El número de cliente no es válido");
         lblNoValor.setToolTipText("Comprueba el número de los clientes en la Lista");
-        add(lblNoValor);
-        lblNoValor.setBounds(30, 70, 293, 14);
+
+        tblCliente.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        pnlTablaCliente.setViewportView(tblCliente);
+
+        btnVer.setText("Ver");
+        btnVer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnVerMousePressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(301, 301, 301)
+                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(100, 100, 100)
+                        .addComponent(lblNoValor))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(pnlTablaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblNumeroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtNumeroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnVer)))))
+                .addContainerGap(131, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblNumeroCliente)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtNumeroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnVer, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(pnlTablaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16)
+                .addComponent(lblNoValor)
+                .addGap(18, 18, 18)
+                .addComponent(btnGuardar)
+                .addContainerGap(77, Short.MAX_VALUE))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMousePressed
         // TODO add your handling code here:
-        AccionesBajaCliente accionesBajaCliente = new AccionesBajaCliente(this);
+        if(accionesBajaCliente == null){
+            accionesBajaCliente = new AccionesBajaCliente(this);
+        }
+         
         accionesBajaCliente.bajaCliente();
         
     }//GEN-LAST:event_btnGuardarMousePressed
@@ -99,11 +180,28 @@ public class PanelBajaCliente extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNumeroClienteActionPerformed
 
+    private void btnVerMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVerMousePressed
+        // TODO add your handling code here:
+        if(accionesBajaCliente == null){
+            accionesBajaCliente = new AccionesBajaCliente(this);
+        }
+        
+        accionesBajaCliente.verCliente(frame);
+        
+    }//GEN-LAST:event_btnVerMousePressed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnVer;
     private javax.swing.JLabel lblNoValor;
     private javax.swing.JLabel lblNumeroCliente;
+    private javax.swing.JScrollPane pnlTablaCliente;
+    private javax.swing.JTable tblCliente;
     private javax.swing.JTextField txtNumeroCliente;
     // End of variables declaration//GEN-END:variables
 }
