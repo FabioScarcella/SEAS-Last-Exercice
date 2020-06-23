@@ -116,6 +116,7 @@ public class AccionesEditaCliente extends AccionesConexionBDD{
         
         if(!compruebaNumeroCliente(numCliente)){
             panel.estadoLblNoValido(true, "Numero de cliente no válido");
+            panel.estadoTabla(false);
             return;
         }
         //En caso de que hubiese un mal parametro, y se haya corregido

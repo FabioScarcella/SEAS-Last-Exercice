@@ -86,6 +86,7 @@ public class AccionesBajaCliente extends AccionesConexionBDD{
         
         if(!compruebaNumeroCliente(numCliente)){
             panel.estadoLblNoValor(true);
+            panel.estadoTabla(false);
             return;
         }
         //En caso de que hubiese un mal parametro, y se haya corregido
