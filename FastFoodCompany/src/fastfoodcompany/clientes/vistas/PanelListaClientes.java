@@ -10,7 +10,7 @@ import fastfoodcompany.principal.FastFoodCompanyFrame;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
+ * Frame para el Listado de los clientes
  * @author fabio
  */
 public class PanelListaClientes extends javax.swing.JPanel {

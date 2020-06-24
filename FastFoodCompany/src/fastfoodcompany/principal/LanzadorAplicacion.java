@@ -6,7 +6,7 @@
 package fastfoodcompany.principal;
 
 /**
- *
+ * Lanzador principal de la aplicación
  * @author Fabio
  */
 public class LanzadorAplicacion {

@@ -9,7 +9,7 @@ import fastfoodcompany.clientes.acciones.AccionesAltaClientes;
 import fastfoodcompany.principal.FastFoodCompanyFrame;
 
 /**
- *
+ * Frame para registrar/dar de alta a un cliente
  * @author Fabio
  */
 public class PanelAltaClientes extends javax.swing.JPanel {
@@ -46,6 +46,11 @@ public class PanelAltaClientes extends javax.swing.JPanel {
         cambiarEstadoLblValorNoCorrecto(false);
     }
     
+    /**
+     * Al dar de alta un cliente, si contiene algun valor no válido, se mostrara
+     * una frase con un mensaje de error
+     * @param state 
+     */
     public void cambiarEstadoLblValorNoCorrecto(boolean state){
          lblValorNoCorrecto.setVisible(state);
     }

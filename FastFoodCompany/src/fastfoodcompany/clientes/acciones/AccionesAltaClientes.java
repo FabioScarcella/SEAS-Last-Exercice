@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.ListIterator;
 
 /**
- *
+ * Clase que contiene los metodos para registrar a un cliente
  * @author Fabio
  */
 public class AccionesAltaClientes extends AccionesConexionBDD{
@@ -23,7 +23,9 @@ public class AccionesAltaClientes extends AccionesConexionBDD{
         this.panel = panel;
         accionesDB = new AccionesListaClientes();
     }
-    
+    /**
+     * Funcion para guardar un cliente en nuestra BDD
+     */
     public void guardarCliente(){
         ArrayList filaCliente = new ArrayList();
         

@@ -10,7 +10,7 @@ import fastfoodcompany.principal.FastFoodCompanyFrame;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
+ * Frane para editar un cliente
  * @author fabio
  */
 public class PanelEditaCliente extends javax.swing.JPanel {
@@ -44,15 +44,26 @@ public class PanelEditaCliente extends javax.swing.JPanel {
         frame.pack();
     }
     
+    /**
+     * Enseñaremos un mensaje de error, o lo ocultaremos
+     * @param state true = sera visible, false = se pondra invisible
+     * @param mensaje String que queremos mostrar por pantalla
+     */
     public void estadoLblNoValido(boolean state, String mensaje){
         lblNoValido.setText(mensaje);
         lblNoValido.setVisible(state);
     }
     
+    /**
+     * @param state true = sera visible, false = se pondra invisible
+     */
     public void estadoTabla(boolean state){
         pnlTblNumCliente.setVisible(state);
     }
     
+    /**
+     * Cargamos/Limpiamos la tabla y sus parametros
+     */
     public void cargaTabla(){
         tabla = new DefaultTableModel(new String[]{
             "Nombre", "Primer apellido", "Segundo apellido"
@@ -237,7 +248,10 @@ public class PanelEditaCliente extends javax.swing.JPanel {
     private void txtNumeroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroClienteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNumeroClienteActionPerformed
-
+    /**
+     * Mouse pressed para guardar los cambios de un cliente
+     * @param evt 
+     */
     private void btnGuardarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMousePressed
         // TODO add your handling code here:
         if(accionesEditaCliente == null){
@@ -250,6 +264,10 @@ public class PanelEditaCliente extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVerClienteActionPerformed
 
+    /**
+     * Mouse pressed para ver los parametros de un cliente
+     * @param evt 
+     */
     private void btnVerClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVerClienteMousePressed
         // TODO add your handling code here: 
         if(accionesEditaCliente == null){

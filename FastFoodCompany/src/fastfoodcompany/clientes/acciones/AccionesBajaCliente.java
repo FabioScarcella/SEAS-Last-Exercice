@@ -17,7 +17,7 @@ import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
+ * Clase que contiene los metodos para elminar a un cliente
  * @author fabio
  */
 public class AccionesBajaCliente extends AccionesConexionBDD{

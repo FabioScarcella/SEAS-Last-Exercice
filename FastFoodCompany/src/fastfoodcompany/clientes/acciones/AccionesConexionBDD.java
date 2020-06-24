@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
+ * Clase principal para comunicarse con nuestra base de datos
  * @author fabio
  */
 public class AccionesConexionBDD {

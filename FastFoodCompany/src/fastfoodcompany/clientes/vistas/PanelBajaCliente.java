@@ -10,7 +10,7 @@ import fastfoodcompany.principal.FastFoodCompanyFrame;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
+ * Panel para dar de baja un cliente
  * @author fabio
  */
 public class PanelBajaCliente extends javax.swing.JPanel {
@@ -28,6 +28,9 @@ public class PanelBajaCliente extends javax.swing.JPanel {
         estadoTabla(false);
     }
     
+    /**
+     * Cargamos la tabla para mostrar un cliente, con sus valores
+     */
     public void cargaTabla(){
         tabla = new DefaultTableModel(new String[]{
             "Nombre", "Primer apellido", "Segundo apellido"
@@ -47,11 +50,18 @@ public class PanelBajaCliente extends javax.swing.JPanel {
         estadoTabla(false);
     }
     
+    /**
+     * Enseñaremos un mensaje de error, o lo ocultaremos
+     * @param state true = sera visible, false = se pondra invisible
+     */
     public void estadoLblNoValor(boolean state){
         lblNoValor.setVisible(state);
     }
     
-     public void estadoTabla(boolean state){
+    /**
+     * @param state true = sera visible, false = se pondra invisible
+     */
+    public void estadoTabla(boolean state){
         pnlTablaCliente.setVisible(state);
     }
     

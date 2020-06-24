@@ -17,7 +17,7 @@ import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
+ * Clase para editar a un cliente
  * @author fabio
  */
 public class AccionesEditaCliente extends AccionesConexionBDD{

@@ -12,7 +12,7 @@ import fastfoodcompany.clientes.vistas.PanelListaClientes;
 import java.util.ArrayList;
 
 /**
- *
+ * Frame principal de la aplicacion
  * @author Fabio
  */
 public class FastFoodCompanyFrame extends javax.swing.JFrame {
@@ -118,7 +118,10 @@ public class FastFoodCompanyFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Mouse pressed en Alta Cliente
+     * @param evt 
+     */
     private void mnuAltaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAltaClienteActionPerformed
         // TODO add your handling code here:
         limpiarPanel();
@@ -143,6 +146,10 @@ public class FastFoodCompanyFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_mnuListaClientesMouseClicked
 
+    /**
+     * Mouse pressed en Lista Clientes
+     * @param evt 
+     */
     private void mnuListaClientesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnuListaClientesMousePressed
         // TODO add your handling code here:
         limpiarPanel();
@@ -154,7 +161,10 @@ public class FastFoodCompanyFrame extends javax.swing.JFrame {
     private void mnuEditaClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnuEditaClienteMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_mnuEditaClienteMouseClicked
-
+    /**
+     * Mouse pressed en Edita Cliente
+     * @param evt 
+     */
     private void mnuEditaClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnuEditaClienteMousePressed
         // TODO add your handling code here:
         limpiarPanel();
@@ -163,6 +173,10 @@ public class FastFoodCompanyFrame extends javax.swing.JFrame {
         pack();
     }//GEN-LAST:event_mnuEditaClienteMousePressed
 
+    /**
+     * Mouse pressed Baja Cliente
+     * @param evt 
+     */
     private void mnuBajaClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnuBajaClienteMousePressed
         // TODO add your handling code here:
         limpiarPanel();
