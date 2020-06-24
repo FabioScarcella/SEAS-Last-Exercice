@@ -76,8 +76,17 @@ public class AccionesBajaCliente extends AccionesConexionBDD{
         }
     }
     
+    /**
+     * Funcion que nos permite ver los campos de un cliente añadiendo su 
+     * numeroCliente
+     * @param frame 
+     */
     public void verCliente(FastFoodCompanyFrame frame){
         panel.cargaTabla();
+        /**
+         * Esperamos un tiempo ya que es mas lento cargar/refrescar la tabla
+         * que acceder a los valores del cliente en la BDD
+         */
         esperaTiempo(150);
         
                 conectaBDD();
@@ -97,7 +106,6 @@ public class AccionesBajaCliente extends AccionesConexionBDD{
         ArrayList cliente = devolverCliente(numCliente);
         
         Vector dataCliente = new Vector();
-        dataCliente.add(cliente.get(0));
         dataCliente.add(cliente.get(1));
         dataCliente.add(cliente.get(2));
         dataCliente.add(cliente.get(3));
@@ -111,6 +119,10 @@ public class AccionesBajaCliente extends AccionesConexionBDD{
         
     }
     
+    /**
+     * @param numeroCliente
+     * @return los valores del cliente, como su nombre y apellidos
+     */
      private ArrayList devolverCliente(String numeroCliente){
         ArrayList cliente = new ArrayList();
                 
@@ -135,6 +147,10 @@ public class AccionesBajaCliente extends AccionesConexionBDD{
         return cliente;
     }
     
+     /**
+      * funcion para esperar un determinado tiempo
+      * @param tiempo en milisegundos
+      */
     private void esperaTiempo(int tiempo){
         try{
             Thread.sleep(tiempo);

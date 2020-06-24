@@ -30,7 +30,7 @@ public class PanelBajaCliente extends javax.swing.JPanel {
     
     public void cargaTabla(){
         tabla = new DefaultTableModel(new String[]{
-            "Numero Cliente", "Nombre", "Primer apellido", "Segundo apellido"
+            "Nombre", "Primer apellido", "Segundo apellido"
         }, 0);
 
         tblCliente.setModel(tabla);    
